@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div>
-      my name is <strong>john doe</strong>
+      <strong>Fitness-Tracker</strong>
     </div>
   );
 }
