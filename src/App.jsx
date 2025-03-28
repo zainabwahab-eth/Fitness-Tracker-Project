@@ -1,12 +1,14 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  return ()
-    
-      
+  return (
+    <div>
+      my name is <strong>john doe</strong>
+    </div>
+  );
 }
 
-export default App
+export default App;
