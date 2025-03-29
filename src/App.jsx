@@ -1,12 +1,18 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Form from "./components/FormOverlay";
+import Tracker from "./components/Tracker";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
-  return ()
-    
-      
+  return (
+    <>
+    {/* <Form /> */}
+    <Tracker/>
+    </>
+  )
+  ;
 }
 
-export default App
+export default App;

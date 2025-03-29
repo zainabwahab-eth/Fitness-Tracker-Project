@@ -1,42 +1,240 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  font-family: "Urbanist", sans-serif;
+  ;
+  margin: 40px 150px;
+}
+
+.main {
+  border: 1px solid #BCBCBC;
+  border-radius: 20px;
+  padding: 24px;
+  height: 500px;
+  overflow: hidden;
+}
+
+
+.nav-cntn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-cntn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+  text-wrap: wrap;
+}
+
+.pri-button {
+  background-color: #76DF02;
+  font-family: "Urbanist", sans-serif;
+  border-radius: 100px;
+  font-size: 16px;
+  padding: 12px 32px;
+  cursor: pointer;
+  border: none;
+}
+
+.sec-button {
+  background-color: #F0F0F0;
+  font-family: "Urbanist", sans-serif;
+  border-radius: 100px;
+  font-size: 16px;
+  padding: 12px 32px;
+  cursor: pointer;
+  border: none;
+}
+
+.duration-cntn {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.entries {
+  background-color: #FAFAFA;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 400px;
+  overflow-y: scroll;
+
+}
+
+.entries .text-cntn {
+  position: sticky;
+  top: -1px;
+  font-size: 16px;
+  margin: 0;
+  background-color: inherit;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.type-filter {
+  border: none;
+  width: 150px;
+  font-family: "Urbanist";
+  font-size: 14px;
+  border-bottom: 1px solid black;
+  padding: 4px;
+}
+
+.workout-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: flex-start;
+}
+
+.workout-card {
+  width: 240px;
+  background-color: white;
+  padding: 12px;
+  border: 1px solid #EDEDED;
+  border-radius: 12px;
+}
+
+.type-cntn,
+.duration-cntn,
+.calendar-cntn,
+.delete-btn {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.type-cntn span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.duration-cntn p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.calendar-cntn p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.delete-btn p {
+  font-size: 12px;
+  font-weight: 300;
+  color: #FF4242;
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.top,
+.down {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.workout-card li {
+  list-style: none;
+}
+
+/* Form */
+
+.overlay,
+.delete-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.overlay-content {
+  position: relative;
+  /* display: flex; */
+  /* flex-direction: column;
+  align-items: center; */
+  background: white;
+  padding: 20px;
+  border: 1px solid #BCBCBC;
+  border-radius: 10px;
   text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 380px;
+
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.overlay-content .pri-button {
+  width: 100%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.overlay-content h2 {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  margin: 0;
+  padding-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.overlay-content select,
+input {
+  display: block;
+  padding: 12px;
+  width: 375px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  font-family: "Urbanist";
+  font-size: 14px;
+  color: black;
 }
 
-.card {
-  padding: 2em;
+.overlay-content input {
+  width: 350px;
 }
 
-.read-the-docs {
-  color: #888;
+.overlay-content input::placeholder {
+  font-size: 14px;
+  color: #525151;
+  font-family: "Urbanist";
+}
+
+select option:first-child {
+  color: #525151;
+}
+
+.overlay-content>.close-btn {
+  display: flex;
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.delete-overlay .pri-button,
+.sec-button {
+  width: 200px
 }
