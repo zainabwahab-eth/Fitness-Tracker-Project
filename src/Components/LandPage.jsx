@@ -3,6 +3,7 @@ import "./LandPage-Style.css";
 import workout from "../assets/workout.svg";
 import progress from "../assets/progress.svg";
 import data from "../assets/data.svg";
+import background from "../assets/background.png";
 import { useNavigate } from "react-router-dom";
 
 function LandPage() {
@@ -22,13 +23,18 @@ function LandPage() {
             Get Started
           </button>
         </div>
+        <div className="head-img">
+          <img className="img" src={background} alt="" />
+        </div>
         <div className="first-container">
           <h1>Track Your Workouts, Stay Motivated!</h1>
           <p>
             Your all-in-one fitness companion to log Workouts. track progress
             and achieve your goals.
           </p>
-          <button className="get-started-btn">Get Started</button>
+          <button className="get-started-btn-2" onClick={handleGetStarted}>
+            Get Started
+          </button>
         </div>
       </div>
       <div className="second-container">
@@ -100,7 +106,9 @@ function LandPage() {
       <div className="fourth-container">
         <h2>Start Your Fitness Journey Today!</h2>
         <p>Log workouts, stay motivated, and hit your goals</p>
-        <button className="get-started-btn">Get Started</button>
+        <button className="get-started-btn-3" onClick={handleGetStarted}>
+          Get Started
+        </button>
       </div>
       <div className="footer">
         <h3>LOGO</h3>

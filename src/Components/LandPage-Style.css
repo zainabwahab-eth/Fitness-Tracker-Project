@@ -5,13 +5,9 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.header{
-  background: url(../assets/background.jpeg);
-}
-
-
 .head{
-  background-color: #f8f9fa;
+  background: #E0E0E0;
+  height: 76px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,39 +15,92 @@
 }
 
 .head-logo{
-  font-size: 1rem;
-  font-weight: bold;
+  width: 67px;
+  height: 29px;
+  top: 24px;
+  left: 120px;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  font-weight: 700;
   color: #343a40;
 }
 
 .get-started-btn{
-  background-color: lime;
-  padding: 0.5rem 1rem;
-  border: none;
+  background-color: #76DF02;
+  color: #000000;
+  padding: 12px 10px;
   border-radius: 20px;
-  cursor: pointer;
+  width: 153px;
+  height: 43px;
+  top: 17px;
+  left: 1167px;
+}
+
+.head-img{
+  position: relative;
+}
+
+.img{
+  height: 667px;
+  width: 1440px;
 }
 
 .first-container{
+  position: absolute;
+  height: 165px;
+  top: 272px;
+  left: 438px;
   text-align: center;
-  line-height: 40px;
-  color: white;
+  gap: 24px;
+}
+
+.first-container h1{
+  font-family: Urbanist;
+  font-weight: 600;
+  width: 564px;
+  height: 44px;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
 }
 
 .first-container p{
- 
+  font-family: Urbanist;
+  font-weight: 500;
+  width: 564px;
+  height: 44px;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0;
+}
+
+.get-started-btn-2{
+  font-family: Urbanist;
+  background: #76DF02;
+  border-radius: 20px;
+  font-weight: 400;
+  size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
 }
 
 .second-container{
+  top: 667px;
   padding-top: 20px;
-  background: whitesmoke;
+  background: #FAFAFA;
 }
 
 .second-container h2{
-  font-size: 28px;
+  font-family: Urbanist;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: 0%;
   margin-bottom: 2rem;
   text-align: center;
-
+  color: #000000;
 }
 
 .feature-content-1,
@@ -75,8 +124,27 @@
 }
 
 .feature-text h3{
-  margin-bottom: 0.5rem;
+  width: 560px;
+  height: 29px;
+  font-family: Urbanist;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
 }
+
+.feature-text p{
+  width: 560px;
+  height: 66px;
+  font-family: Urbanist;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0%;
+  color: #000000;
+}
+
 
 .steps{
   display: flex;
@@ -94,8 +162,19 @@
 }
 
 .third-container h2{
-  font-size: 28px;
-  margin-bottom: 3rem;
+  font-family: Urbanist;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
+  align-content: center;
+}
+
+.step{
+  width: 379px;
+  height: 98px;
+  gap: 16px;
 }
 
 span{
@@ -107,36 +186,76 @@ span{
 }
 
 .step h3{
-  font-size: 1rem;
-
+  font-family: Urbanist;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0%;
+  align-items: center;
+  font-weight: 600;
+  line-height: 100%;
 }
 .step p{
-  font-size: 14px;
+  font-family: Urbanist;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0%;
+  align-items: center;
+  font-weight: 400;
+  line-height: 22px;
 }
 
 .fourth-container{
   text-align: center;
-  background:rgb(252, 234, 202);
-  padding: 2rem;
-  line-height: 35px;
+  background: #FFF8F0;
+  height: 293px;
+  padding-top: 24px;
 }
 
 .fourth-container h2{
-  font-size: 1.5rem;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0%;
+  align-items: center;
+  color: #000000;
+  font-family: Urbanists;
 }
 
 .fourth-container p{
-  font-size: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0%;
+  align-items: center;
+  color: #000000;
+  font-family: Urbanist;
+}
+
+.get-started-btn-3{
+  background: #76DF02;
+  border-radius: 20px;
+  font-family: Urbanist;
+  width: 153px;
+  height: 43px;
+  padding: 12px 10px;
+  gap: 10px;
+  color: #000000;
 }
 
 .footer{
-  background: rgb(66, 37, 95);
+  background: #51355A;
+  height: 4rem;
+  justify-content: center;
 }
 
 .footer h3{
-  color: white;
-  font-size: 11px;
-  padding: 10px;
-  margin-left: 30px;
+  font-family: Urbanist;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+
 }
+
 
