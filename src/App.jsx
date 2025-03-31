@@ -1,15 +1,16 @@
 import { useState } from "react";
-import "./App.css";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Loginpage from "./Components/Loginpage.jsx";
 import LandPage from "./Component/LandPage";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <div>
-      <LandPage />
-    </div>
+    <Routes>
+      <Route path="/" element={<LandPage />} />
+      <Route path="/login" element={<Loginpage />} />
+    </Routes>
   );
-}
+};
 
 export default App;
