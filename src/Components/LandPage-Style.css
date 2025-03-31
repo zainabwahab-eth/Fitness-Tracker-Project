@@ -7,12 +7,17 @@
 
 .head{
   background: #E0E0E0;
-  height: 76px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 6.5rem;
+  position: absolute;
+  opacity: 0.8;
+  width: 100%;
+  z-index: 1;
 }
+
 
 .head-logo{
   width: 67px;
@@ -32,9 +37,15 @@
   padding: 12px 10px;
   border-radius: 20px;
   width: 153px;
-  height: 43px;
+  height: 42px;
   top: 17px;
   left: 1167px;
+}
+
+.get-started-btn:hover{
+  color: black;
+  background-color: #9ef542;
+  border: none;
 }
 
 .head-img{
@@ -42,17 +53,18 @@
 }
 
 .img{
-  height: 667px;
+  height: 700px;
   width: 1440px;
+  opacity: 0.8;
 }
 
 .first-container{
   position: absolute;
   height: 165px;
-  top: 272px;
-  left: 438px;
+  top: 380px;
+  left: 390px;
   text-align: center;
-  gap: 24px;
+  line-height: 90px;
 }
 
 .first-container h1{
@@ -79,12 +91,19 @@
 .get-started-btn-2{
   font-family: Urbanist;
   background: #76DF02;
+  width: 153px;
   border-radius: 20px;
   font-weight: 400;
   size: 16px;
   line-height: 100%;
   letter-spacing: 0%;
   color: #000000;
+}
+
+.get-started-btn-2:hover{
+  color: black;
+  background-color: #9ef542;
+  border: none;
 }
 
 .second-container{
@@ -168,6 +187,7 @@
   line-height: 100%;
   letter-spacing: 0%;
   color: #000000;
+  margin-bottom: 30px;
   align-content: center;
 }
 
@@ -178,8 +198,8 @@
 }
 
 span{
-  background: lime;
-  font-size: 12px;
+  background: #76DF02;
+  font-size: 11px;
   padding: 5px 10px;
   border-radius: 20px;
   margin-bottom: 50px;
@@ -207,8 +227,8 @@ span{
 .fourth-container{
   text-align: center;
   background: #FFF8F0;
-  height: 293px;
-  padding-top: 24px;
+  line-height: 100%;
+  padding: 50px 0;
 }
 
 .fourth-container h2{
@@ -222,13 +242,14 @@ span{
 }
 
 .fourth-container p{
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 22px;
   letter-spacing: 0%;
   align-items: center;
   color: #000000;
   font-family: Urbanist;
+  margin-bottom: 10px;
 }
 
 .get-started-btn-3{
@@ -242,10 +263,17 @@ span{
   color: #000000;
 }
 
+.get-started-btn-3:hover{
+  color: black;
+  background-color: #9ef542;
+  border: none;
+}
+
 .footer{
   background: #51355A;
   height: 4rem;
   justify-content: center;
+  padding: 25px 60px;
 }
 
 .footer h3{
