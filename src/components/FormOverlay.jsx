@@ -12,7 +12,6 @@ function FormOverlay({ isOpen, onClose }) {
   });
 
   const dispatch = useDispatch();
-  // const entries = useSelector((state) => state.fitness.entries);
 
   const handleChange = (e) => {
     setActivity({ ...activity, [e.target.name]: e.target.value });
@@ -42,7 +41,6 @@ function FormOverlay({ isOpen, onClose }) {
           <option value="">Select Type</option>
           <option value="Run">Run</option>
           <option value="Lift">Lift</option>
-          {/* <option value="Yoga">Yoga</option> */}
         </select>
 
         <input
@@ -56,7 +54,6 @@ function FormOverlay({ isOpen, onClose }) {
 
         <input
           className="date"
-          // placeholder="Duration (minutes)"
           type="date"
           name="date"
           value={activity.date}
