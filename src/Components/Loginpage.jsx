@@ -16,7 +16,7 @@ const Loginpage = () => {
         <>
             <div className='flex justify-center items-center h-screen bg-gray-100'>
                 <div className='bg-white p-6 rounded shadow-md w-96'>
-                <h1 className='text-xl font-semibold mb-4'>Logo</h1>
+                <h1 className='text-xl font-semibold mb-4'>ZIMCS</h1>
                     <div className='flex flex-col items-center'>
                        
                     <input
