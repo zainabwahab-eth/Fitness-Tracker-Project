@@ -3,13 +3,24 @@ import "./LandPage-Style.css";
 import workout from "../assets/workout.svg";
 import progress from "../assets/progress.svg";
 import data from "../assets/data.svg";
+import { useNavigate } from "react-router-dom";
+
 function LandPage() {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate("/login");
+  };
+
   return (
     <div>
       <div className="header">
         <div className="head">
           <h2 className="head-logo">LOGO</h2>
-          <button className="get-started-btn">Get Started</button>
+
+          <button className="get-started-btn" onClick={handleGetStarted}>
+            Get Started
+          </button>
         </div>
         <div className="first-container">
           <h1>Track Your Workouts, Stay Motivated!</h1>
