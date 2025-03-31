@@ -1,14 +1,12 @@
-import { useState } from "react";
-import "./App.css";
+import React from 'react'
+import Loginpage from './Components/Loginpage.jsx'
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <div>
-      <strong>Fitness-Tracker</strong>
-    </div>
-  );
+    <>
+      <Loginpage />
+    </>
+  )
 }
 
-export default App;
+export default App
