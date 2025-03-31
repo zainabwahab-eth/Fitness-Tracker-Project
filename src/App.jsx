@@ -1,14 +1,17 @@
-import { useState } from "react";
+
+import { Routes, Route } from "react-router-dom";
+import LoginPage from "./Components/Loginpage.jsx";
+import LandPage from "./Components/LandPage.jsx";
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
 
-  return (
-    <div>
-      <strong>Fitness-Tracker</strong>
-    </div>
+    <Routes>
+      <Route path="/" element={<LandPage />} />
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
   );
-}
+};
 
 export default App;
