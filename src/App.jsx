@@ -1,12 +1,13 @@
-import React from 'react'
-import Loginpage from './Components/Loginpage.jsx'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Loginpage from './Components/Loginpage.jsx';
 
 const App = () => {
   return (
-    <>
-      <Loginpage />
-    </>
-  )
-}
+    <Routes>
+      <Route path="/" element={<Loginpage />} />
+    </Routes>
+  );
+};
 
-export default App
+export default App;

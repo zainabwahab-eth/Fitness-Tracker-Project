@@ -40,7 +40,7 @@ const Loginpage = () => {
                 
                         
                         <br />
-                        <button className='bg-[#76DF02] w-full p-[10px] rounded-[30px]' onClick={handleLogin}>Login</button>
+                        <button className='bg-[#76DF02] w-full p-[10px] rounded-[30px] hover:bg-green-600 transition' onClick={handleLogin}>Login</button>
                     </div>
                 </div>
             </div>
