@@ -17,7 +17,7 @@ function LandPage() {
     <div>
       <div className="header">
         <div className="head">
-          <h2 className="head-logo">LOGO</h2>
+          <h2 className="head-logo">ZIMCS</h2>
 
           <button className="get-started-btn" onClick={handleGetStarted}>
             Get Started
@@ -111,7 +111,7 @@ function LandPage() {
         </button>
       </div>
       <div className="footer">
-        <h3>LOGO</h3>
+        <h3>ZIMC</h3>
       </div>
     </div>
   );

@@ -1,0 +1,158 @@
+.main {
+    font-family: "Urbanist", sans-serif;
+    border: 1px solid #BCBCBC;
+    border-radius: 20px;
+    padding: 24px;
+    height: 550px;
+    overflow: hidden;
+    margin: 40px 180px;
+}
+
+.nav-cntn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-cntn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+    text-wrap: wrap;
+}
+
+.pri-button,
+.sec-button {
+    font-family: "Urbanist", sans-serif;
+    border-radius: 100px;
+    font-size: 16px;
+    padding: 12px 32px;
+    cursor: pointer;
+    border: none;
+}
+
+.pri-button {
+    background-color: #76DF02;
+}
+
+.sec-button {
+    background-color: #F0F0F0;
+}
+
+.duration-cntn h3 {
+    font-size: 18px;
+    padding: 16px 0;
+    font-weight: 600;
+}
+
+
+.entries-cntn {
+    background-color: #FAFAFA;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.text-cntn {
+    position: sticky;
+    top: -1px;
+    margin: 0px;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+}
+
+.text-cntn h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.type-filter {
+    border: none;
+    width: 150px;
+    font-family: "Urbanist";
+    font-size: 14px;
+    border-bottom: 1px solid black;
+    padding: 4px;
+    background-color: inherit;
+}
+
+.workout-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: flex-start;
+    margin: 0 20px;
+}
+
+.workout-card {
+    width: 230px;
+    background-color: white;
+    padding: 12px;
+    border: 1px solid #EDEDED;
+    border-radius: 12px;
+}
+
+.type-cntn,
+.duration-cntn,
+.calendar-cntn,
+.delete-btn {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.type-cntn p {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.duration-cntn p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.calendar-cntn p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.delete-btn p {
+    font-size: 12px;
+    font-weight: 300;
+    color: #FF4242;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.top,
+.down {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top {
+    padding-bottom: 28px;
+}
+
+.workout-card li {
+    list-style: none;
+}

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
   const handleLogin = () => {
     if (email && name) {
-      alert(`Logged in as  ${name} with email ${email}`);
+      navigate("/tracker");
     } else {
       alert("Please fill in all fields");
     }

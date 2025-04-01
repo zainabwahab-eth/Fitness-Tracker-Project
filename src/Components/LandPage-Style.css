@@ -1,14 +1,17 @@
-*{
+* {
   box-sizing: border-box;
   padding: 0%;
   margin: 0%;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Urbanist", sans-serif;
 }
 
-.head{
-  background: #E0E0E0;
-  width: 1440px;
-  height: 60px;
+.header {
+  background: url(../assets/background.jpeg);
+}
+
+
+.head {
+  background-color: #f8f9fa;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,6 +24,7 @@
   z-index: 1;
 }
 
+<<<<<<< HEAD
 
 .head-logo{
   width: 67px;
@@ -38,6 +42,18 @@
   background-color: #76DF02;
   color: #000000;
   padding: 12px 10px;
+=======
+.head-logo {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.get-started-btn {
+  background-color: lime;
+  padding: 0.5rem 1rem;
+  border: none;
+>>>>>>> master
   border-radius: 20px;
   width: 153px;
   height: 42px;
@@ -61,11 +77,15 @@
   /* opacity: 0.8; */
 }
 
+<<<<<<< HEAD
 .first-container{
   position: absolute;
   height: 165px;
   top: 300px;
   left: 390px;
+=======
+.first-container {
+>>>>>>> master
   text-align: center;
   line-height: 90px;
 }
@@ -81,6 +101,7 @@
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 .first-container p{
   font-family: Urbanist;
   font-weight: 500;
@@ -111,40 +132,49 @@
 
 .second-container{
   top: 667px;
+=======
+.second-container {
+>>>>>>> master
   padding-top: 20px;
   background: #FAFAFA;
 }
 
+<<<<<<< HEAD
 .second-container h2{
   font-family: Urbanist;
   font-size: 32px;
   line-height: 100%;
   letter-spacing: 0%;
+=======
+.second-container h2 {
+  font-size: 28px;
+>>>>>>> master
   margin-bottom: 2rem;
   text-align: center;
   color: #000000;
 }
 
 .feature-content-1,
-.feature-content-3{
+.feature-content-3 {
   display: flex;
-  padding:0 13rem;
+  padding: 0 13rem;
   align-items: center;
   gap: 100px;
 }
 
-.feature-content-2{
- display: flex;
- align-items: center;
- padding:0 13rem;
- gap: 100px;
+.feature-content-2 {
+  display: flex;
+  align-items: center;
+  padding: 0 13rem;
+  gap: 100px;
 }
 
-.feature-svg{
+.feature-svg {
   width: 300px;
   height: 300px;
 }
 
+<<<<<<< HEAD
 .feature-text h3{
   width: 560px;
   height: 29px;
@@ -169,20 +199,28 @@
 
 
 .steps{
+=======
+.feature-text h3 {
+  margin-bottom: 0.5rem;
+}
+
+.steps {
+>>>>>>> master
   display: flex;
   justify-content: space-between;
 }
 
-.step{
+.step {
   line-height: 30px;
 }
 
-.third-container{
+.third-container {
   background: white;
   padding: 2rem 6rem;
   text-align: center;
 }
 
+<<<<<<< HEAD
 .third-container h2{
   font-family: Urbanist;
   font-weight: 600;
@@ -203,11 +241,22 @@
 span{
   background: #76DF02;
   font-size: 11px;
+=======
+.third-container h2 {
+  font-size: 28px;
+  margin-bottom: 3rem;
+}
+
+span {
+  background: lime;
+  font-size: 12px;
+>>>>>>> master
   padding: 5px 10px;
   border-radius: 20px;
   margin-bottom: 50px;
 }
 
+<<<<<<< HEAD
 .step h3{
   font-family: Urbanist;
   color: #000000;
@@ -225,10 +274,20 @@ span{
   align-items: center;
   font-weight: 400;
   line-height: 22px;
+=======
+.step h3 {
+  font-size: 1rem;
+
 }
 
-.fourth-container{
+.step p {
+  font-size: 14px;
+>>>>>>> master
+}
+
+.fourth-container {
   text-align: center;
+<<<<<<< HEAD
   background: #FFF8F0;
   line-height: 100%;
   padding: 50px 0;
@@ -290,3 +349,28 @@ span{
 }
 
 
+=======
+  background: rgb(252, 234, 202);
+  padding: 2rem;
+  line-height: 35px;
+}
+
+.fourth-container h2 {
+  font-size: 1.5rem;
+}
+
+.fourth-container p {
+  font-size: 12px;
+}
+
+.footer {
+  background: rgb(66, 37, 95);
+}
+
+.footer h3 {
+  color: white;
+  font-size: 11px;
+  padding: 10px;
+  margin-left: 30px;
+}
+>>>>>>> master
