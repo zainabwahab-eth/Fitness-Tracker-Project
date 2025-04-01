@@ -103,7 +103,7 @@ function LandPage() {
         <button className="get-started-btn">Get Started</button>
       </div>
       <div className="footer">
-        <h3>LOGO</h3>
+        <h3>ZIMC</h3>
       </div>
     </div>
   );
