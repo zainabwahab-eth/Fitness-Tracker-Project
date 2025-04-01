@@ -1,16 +1,16 @@
-import React from "react";
-import "./LandPage-Style.css";
-import workout from "../assets/workout.svg";
-import progress from "../assets/progress.svg";
-import data from "../assets/data.svg";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import '../LandPage-Style.css'
+import workout from '../assets/workout.svg'
+import progress from '../assets/progress.svg'
+import data from '../assets/data.svg'
+import { useNavigate } from 'react-router-dom'
 
 function LandPage() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleGetStarted = () => {
-    navigate("/login");
-  };
+    navigate('/login')
+  }
 
   return (
     <div>
@@ -25,8 +25,8 @@ function LandPage() {
         <div className="first-container">
           <h1>Track Your Workouts, Stay Motivated!</h1>
           <p>
-            Your all-in-one fitness companion to log Workouts. track progress
-            and achieve your goals.
+            Your all-in-one fitness companion to log Workouts. track progress and achieve your
+            goals.
           </p>
           <button className="get-started-btn">Get Started</button>
         </div>
@@ -41,10 +41,9 @@ function LandPage() {
             <div className="feature-text">
               <h3>Effortless Workout Tracking</h3>
               <p>
-                Logging your workouts has never been simpler whether you're
-                running, weighing, doing yoga, or any other activity.our fitness
-                tracker lets you quickly record and manage your exercise in just
-                a few clicks
+                Logging your workouts has never been simpler whether you're running, weighing, doing
+                yoga, or any other activity.our fitness tracker lets you quickly record and manage
+                your exercise in just a few clicks
               </p>
             </div>
           </div>
@@ -52,9 +51,9 @@ function LandPage() {
             <div className="feature-text">
               <h3>View Your Progress Over Time</h3>
               <p>
-                Easily access part workouts analyze trends, and see how you're
-                improving over time. With our detailed history logs, you'll
-                always have a clear picture of your fitness progress.
+                Easily access part workouts analyze trends, and see how you're improving over time.
+                With our detailed history logs, you'll always have a clear picture of your fitness
+                progress.
               </p>
             </div>
             <div>
@@ -68,10 +67,9 @@ function LandPage() {
             <div className="feature-text">
               <h3>100% Free , Private & Secure</h3>
               <p>
-                Your fitness data is yours clone, Our app securely stores your
-                workout history in your browser's local storage, meaning no
-                accounts, no passwords, and no third-party. have access to your
-                personal information.
+                Your fitness data is yours clone, Our app securely stores your workout history in
+                your browser's local storage, meaning no accounts, no passwords, and no third-party.
+                have access to your personal information.
               </p>
             </div>
           </div>
@@ -106,7 +104,7 @@ function LandPage() {
         <h3>ZIMC</h3>
       </div>
     </div>
-  );
+  )
 }
 
-export default LandPage;
+export default LandPage

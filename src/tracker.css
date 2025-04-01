@@ -1,158 +1,274 @@
 .main {
-    font-family: "Urbanist", sans-serif;
-    border: 1px solid #BCBCBC;
-    border-radius: 20px;
-    padding: 24px;
-    height: 550px;
-    overflow: hidden;
-    margin: 40px 180px;
+  font-family: 'Urbanist', sans-serif;
+  border: 1px solid #bcbcbc;
+  border-radius: 20px;
+  padding: 24px;
+  height: 650px; /* Increased height to accommodate chart */
+  overflow: hidden;
+  margin: 40px 180px;
 }
 
 .nav-cntn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo Styles */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  position: relative;
+  width: 40px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dumbbell-bar {
+  width: 30px;
+  height: 4px;
+  background-color: #333;
+  border-radius: 2px;
+  position: absolute;
+}
+
+.dumbbell-weight {
+  width: 12px;
+  height: 12px;
+  background-color: #76df02;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.dumbbell-weight.left {
+  left: 0;
+}
+
+.dumbbell-weight.right {
+  right: 0;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.5px;
 }
 
 .button-cntn {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    justify-content: space-between;
-    text-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+  text-wrap: wrap;
 }
 
 .pri-button,
 .sec-button {
-    font-family: "Urbanist", sans-serif;
-    border-radius: 100px;
-    font-size: 16px;
-    padding: 12px 32px;
-    cursor: pointer;
-    border: none;
+  font-family: 'Urbanist', sans-serif;
+  border-radius: 100px;
+  font-size: 16px;
+  padding: 12px 32px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
 }
 
 .pri-button {
-    background-color: #76DF02;
+  background-color: #76df02;
+}
+
+.pri-button:hover {
+  background-color: #65c002;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(118, 223, 2, 0.2);
 }
 
 .sec-button {
-    background-color: #F0F0F0;
+  background-color: #f0f0f0;
+}
+
+.sec-button:hover {
+  background-color: #e0e0e0;
+}
+
+.sec-button.active {
+  background-color: #333;
+  color: white;
 }
 
 .duration-cntn h3 {
-    font-size: 18px;
-    padding: 16px 0;
-    font-weight: 600;
+  font-size: 18px;
+  padding: 16px 0;
+  font-weight: 600;
 }
 
+/* Chart Container Styles */
+.chart-container {
+  background-color: #fafafa;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  height: 250px;
+  animation: fadeIn 0.5s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chart-container h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #888;
+  font-style: italic;
+}
 
 .entries-cntn {
-    background-color: #FAFAFA;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    height: 400px;
-    overflow-y: scroll;
+  background-color: #fafafa;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 250px; /* Reduced height to fit chart */
+  overflow-y: scroll;
+  transition: height 0.3s ease;
+}
+
+/* When chart is not shown, make entries container taller */
+.chart-container + .entries-cntn {
+  height: 250px;
+}
+
+.entries-cntn:not(.chart-container + .entries-cntn) {
+  height: 500px;
 }
 
 .text-cntn {
-    position: sticky;
-    top: -1px;
-    margin: 0px;
-    background-color: inherit;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 24px;
+  position: sticky;
+  top: -1px;
+  margin: 0px;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
 }
 
 .text-cntn h2 {
-    font-size: 18px;
-    font-weight: 600;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .filter {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .type-filter {
-    border: none;
-    width: 150px;
-    font-family: "Urbanist";
-    font-size: 14px;
-    border-bottom: 1px solid black;
-    padding: 4px;
-    background-color: inherit;
+  border: none;
+  width: 150px;
+  font-family: 'Urbanist';
+  font-size: 14px;
+  border-bottom: 1px solid black;
+  padding: 4px;
+  background-color: inherit;
 }
 
 .workout-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    justify-content: flex-start;
-    margin: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: flex-start;
+  margin: 0 20px;
 }
 
 .workout-card {
-    width: 230px;
-    background-color: white;
-    padding: 12px;
-    border: 1px solid #EDEDED;
-    border-radius: 12px;
+  width: 230px;
+  background-color: white;
+  padding: 12px;
+  border: 1px solid #ededed;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.workout-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
 }
 
 .type-cntn,
 .duration-cntn,
 .calendar-cntn,
 .delete-btn {
-    display: inline-flex;
-    gap: 4px;
-    align-items: center;
-    justify-content: center;
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
 }
 
 .type-cntn p {
-    font-size: 16px;
-    font-weight: 600;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .duration-cntn p {
-    font-size: 14px;
-    font-weight: 400;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .calendar-cntn p {
-    font-size: 14px;
-    font-weight: 400;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .delete-btn p {
-    font-size: 12px;
-    font-weight: 300;
-    color: #FF4242;
+  font-size: 12px;
+  font-weight: 300;
+  color: #ff4242;
 }
 
 .delete-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .top,
 .down {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .top {
-    padding-bottom: 28px;
+  padding-bottom: 28px;
 }
 
 .workout-card li {
-    list-style: none;
+  list-style: none;
 }
