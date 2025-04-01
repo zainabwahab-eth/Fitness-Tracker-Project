@@ -8,7 +8,6 @@ import calendar from "../assets/calendar.svg";
 import duration from "../assets/duration.svg";
 import trash from "../assets/trash.svg";
 import DeleteOverlay from "./DeleteOverlay";
-import "./tracker.css";
 
 function Tracker() {
   const entries = useSelector((state) => state.fitness.entries);
