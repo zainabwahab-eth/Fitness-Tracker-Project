@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import LoginPage from "./components/Loginpage.jsx";
-import LandPage from "./components/LandPage.jsx";
-import Tracker from "./components/Tracker.jsx";
+import LoginPage from "./mainComponents/Loginpage.jsx";
+import LandPage from "./mainComponents/LandPage.jsx";
+import Tracker from "./mainComponents/Tracker.jsx";
 
 const App = () => {
   return (
