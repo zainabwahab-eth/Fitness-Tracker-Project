@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../Components/Loginpage.css"; // Import the new CSS file
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -14,16 +15,16 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center h-screen bg-gray-100">
-        <div className="bg-white p-6 rounded shadow-md w-96">
-          <h1 className="text-xl font-semibold mb-4">ZIMCS</h1>
-          <div className="flex flex-col items-center">
+      <div className="login-container">
+        <div className="login-box">
+          <h1 className="login-title">LOGO</h1>
+          <div className="login-form">
             <input
               type="text"
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mb-4 p-2 border border-gray-300 rounded w-full"
+              className="login-input"
               aria-label="Enter your name"
             />
             <br />
@@ -33,15 +34,11 @@ const LoginPage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="mb-4 p-2 border border-gray-300 rounded w-full"
+              className="login-input"
               aria-label="Enter your email"
             />
-
             <br />
-            <button
-              className="bg-[#76DF02] w-full p-[10px] rounded-[30px] hover:bg-green-600 transition"
-              onClick={handleLogin}
-            >
+            <button className="login-button" onClick={handleLogin}>
               Login
             </button>
           </div>
