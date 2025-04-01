@@ -24,25 +24,6 @@
   z-index: 1;
 }
 
-<<<<<<< HEAD
-
-.head-logo{
-  width: 67px;
-  height: 29px;
-  top: 24px;
-  left: 120px;
-  font-size: 24px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  font-weight: 700;
-  color: #343a40;
-}
-
-.get-started-btn{
-  background-color: #76DF02;
-  color: #000000;
-  padding: 12px 10px;
-=======
 .head-logo {
   font-size: 1rem;
   font-weight: bold;
@@ -53,7 +34,6 @@
   background-color: lime;
   padding: 0.5rem 1rem;
   border: none;
->>>>>>> master
   border-radius: 20px;
   width: 153px;
   height: 42px;
@@ -77,15 +57,7 @@
   /* opacity: 0.8; */
 }
 
-<<<<<<< HEAD
-.first-container{
-  position: absolute;
-  height: 165px;
-  top: 300px;
-  left: 390px;
-=======
 .first-container {
->>>>>>> master
   text-align: center;
   line-height: 90px;
 }
@@ -101,54 +73,13 @@
   color: #FFFFFF;
 }
 
-<<<<<<< HEAD
-.first-container p{
-  font-family: Urbanist;
-  font-weight: 500;
-  width: 564px;
-  height: 44px;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0;
-}
-
-.get-started-btn-2{
-  font-family: Urbanist;
-  background: #76DF02;
-  width: 153px;
-  border-radius: 20px;
-  font-weight: 400;
-  size: 16px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #000000;
-}
-
-.get-started-btn-2:hover{
-  color: black;
-  background-color: #9ef542;
-  border: none;
-}
-
-.second-container{
-  top: 667px;
-=======
 .second-container {
->>>>>>> master
   padding-top: 20px;
   background: #FAFAFA;
 }
 
-<<<<<<< HEAD
-.second-container h2{
-  font-family: Urbanist;
-  font-size: 32px;
-  line-height: 100%;
-  letter-spacing: 0%;
-=======
 .second-container h2 {
   font-size: 28px;
->>>>>>> master
   margin-bottom: 2rem;
   text-align: center;
   color: #000000;
@@ -174,38 +105,11 @@
   height: 300px;
 }
 
-<<<<<<< HEAD
-.feature-text h3{
-  width: 560px;
-  height: 29px;
-  font-family: Urbanist;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #000000;
-}
-
-.feature-text p{
-  width: 560px;
-  height: 66px;
-  font-family: Urbanist;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
-  letter-spacing: 0%;
-  color: #000000;
-}
-
-
-.steps{
-=======
 .feature-text h3 {
   margin-bottom: 0.5rem;
 }
 
 .steps {
->>>>>>> master
   display: flex;
   justify-content: space-between;
 }
@@ -220,28 +124,6 @@
   text-align: center;
 }
 
-<<<<<<< HEAD
-.third-container h2{
-  font-family: Urbanist;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #000000;
-  margin-bottom: 30px;
-  align-content: center;
-}
-
-.step{
-  width: 379px;
-  height: 98px;
-  gap: 16px;
-}
-
-span{
-  background: #76DF02;
-  font-size: 11px;
-=======
 .third-container h2 {
   font-size: 28px;
   margin-bottom: 3rem;
@@ -250,31 +132,11 @@ span{
 span {
   background: lime;
   font-size: 12px;
->>>>>>> master
   padding: 5px 10px;
   border-radius: 20px;
   margin-bottom: 50px;
 }
 
-<<<<<<< HEAD
-.step h3{
-  font-family: Urbanist;
-  color: #000000;
-  font-size: 20px;
-  letter-spacing: 0%;
-  align-items: center;
-  font-weight: 600;
-  line-height: 100%;
-}
-.step p{
-  font-family: Urbanist;
-  color: #000000;
-  font-size: 16px;
-  letter-spacing: 0%;
-  align-items: center;
-  font-weight: 400;
-  line-height: 22px;
-=======
 .step h3 {
   font-size: 1rem;
 
@@ -282,74 +144,10 @@ span {
 
 .step p {
   font-size: 14px;
->>>>>>> master
 }
 
 .fourth-container {
   text-align: center;
-<<<<<<< HEAD
-  background: #FFF8F0;
-  line-height: 100%;
-  padding: 50px 0;
-}
-
-.fourth-container h2{
-  font-size: 36px;
-  font-weight: 600;
-  line-height: 100%;
-  letter-spacing: 0%;
-  align-items: center;
-  color: #000000;
-  font-family: Urbanists;
-}
-
-.fourth-container p{
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 22px;
-  letter-spacing: 0%;
-  align-items: center;
-  color: #000000;
-  font-family: Urbanist;
-  margin-bottom: 10px;
-}
-
-.get-started-btn-3{
-  background: #76DF02;
-  border-radius: 20px;
-  font-family: Urbanist;
-  width: 153px;
-  height: 43px;
-  padding: 12px 10px;
-  gap: 10px;
-  color: #000000;
-}
-
-.get-started-btn-3:hover{
-  color: black;
-  background-color: #9ef542;
-  border: none;
-}
-
-.footer{
-  background: #51355A;
-  height: 4rem;
-  justify-content: center;
-  padding: 25px 60px;
-}
-
-.footer h3{
-  font-family: Urbanist;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  color: #FFFFFF;
-
-}
-
-
-=======
   background: rgb(252, 234, 202);
   padding: 2rem;
   line-height: 35px;
@@ -373,4 +171,3 @@ span {
   padding: 10px;
   margin-left: 30px;
 }
->>>>>>> master
