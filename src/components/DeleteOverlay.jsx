@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./tracker.css";
+import "./overlay.css";
 import { useDispatch } from "react-redux";
 import { deleteEntry } from "./redux/fitnessSlice";
 

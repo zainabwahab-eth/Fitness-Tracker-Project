@@ -1,0 +1,75 @@
+.overlay,
+.delete-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.overlay-content {
+    position: relative;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #BCBCBC;
+    border-radius: 10px;
+}
+
+.overlay-content .pri-button {
+    width: 100%;
+}
+
+.overlay-content h2 {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.overlay-content select,
+input {
+    display: block;
+    padding: 12px;
+    width: 375px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    font-family: "Urbanist";
+    font-size: 14px;
+    color: black;
+}
+
+.overlay-content input::placeholder {
+    font-size: 14px;
+    color: #525151;
+    font-family: "Urbanist";
+}
+
+select option:first-child {
+    color: #525151;
+}
+
+.overlay-content>.close-btn {
+    display: flex;
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.delete-overlay .pri-button,
+.sec-button {
+    width: 200px
+}

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import "./tracker.css";
+import "./overlay.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addEntry } from "./redux/fitnessSlice";
+
 
 function FormOverlay({ isOpen, onClose }) {
   if (!isOpen) return null;

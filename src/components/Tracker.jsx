@@ -8,6 +8,7 @@ import calendar from "../assets/calendar.svg";
 import duration from "../assets/duration.svg";
 import trash from "../assets/trash.svg";
 import DeleteOverlay from "./DeleteOverlay";
+import "./tracker.css";
 
 function Tracker() {
   const entries = useSelector((state) => state.fitness.entries);
@@ -21,15 +22,26 @@ function Tracker() {
   };
 
   const totalDuration = function () {
-    return entries
+    const duration = entries
       .map((entry) => entry.duration)
       .reduce((acc, num) => +acc + +num, 0);
+
+    if (duration >= 60) {
+      const hours = Math.floor(duration / 60);
+      const minutes = duration % 60;
+
+      return `${hours}hr${hours !== 1 ? "s" : ""}, ${minutes}min${
+        minutes !== 1 ? "s" : ""
+      }`;
+    } else {
+      return `${duration}min${duration !== 1 ? "s" : ""}`;
+    }
   };
 
   return (
     <main className="main">
       <div className="nav-cntn">
-        <h2>LOGO</h2>
+        <h2>ZIMCS</h2>
         <div className="button-cntn">
           <button className="sec-button">View Tracker</button>
           <button
@@ -44,10 +56,11 @@ function Tracker() {
           />
         </div>
       </div>
+
       <div className="duration-cntn">
-        <h3>Total Duration: {totalDuration()}mins</h3>
+        <h3>Total Duration: {totalDuration()}</h3>
       </div>
-      <section className="entries">
+      <section className="entries-cntn">
         <div className="text-cntn">
           <h2>All Workouts</h2>
           <div className="filter">
@@ -74,7 +87,7 @@ function Tracker() {
                       ) : (
                         <img src={lift} alt="type-icon" />
                       )}
-                      <span>{entry.type}</span>
+                      <p>{entry.type}</p>
                     </div>
                     <button
                       className="delete-btn"
