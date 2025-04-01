@@ -28,11 +28,11 @@ function LandPage() {
         </div>
         <div className="first-container">
           <h1>Track Your Workouts, Stay Motivated!</h1>
-          <p>
+          <p className="head-paragraph">
             Your all-in-one fitness companion to log Workouts. track progress
             and achieve your goals.
           </p>
-          <button className="get-started-btn-2" onClick={handleGetStarted}>
+          <button className="started-btn-2" onClick={handleGetStarted}>
             Get Started
           </button>
         </div>
@@ -106,7 +106,7 @@ function LandPage() {
       <div className="fourth-container">
         <h2>Start Your Fitness Journey Today!</h2>
         <p>Log workouts, stay motivated, and hit your goals</p>
-        <button className="get-started-btn-3" onClick={handleGetStarted}>
+        <button className="started-btn-3" onClick={handleGetStarted}>
           Get Started
         </button>
       </div>
