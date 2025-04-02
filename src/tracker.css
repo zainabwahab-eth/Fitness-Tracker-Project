@@ -3,7 +3,7 @@
   border: 1px solid #bcbcbc;
   border-radius: 20px;
   padding: 24px;
-  height: 650px; /* Increased height to accommodate chart */
+  height: 650px;
   overflow: hidden;
   margin: 40px 180px;
 }
@@ -15,7 +15,6 @@
   padding: 24px;
 }
 
-/* Logo Styles */
 .logo {
   display: flex;
   align-items: center;
@@ -154,12 +153,11 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  height: 250px; /* Reduced height to fit chart */
+  height: 250px;
   overflow-y: scroll;
   transition: height 0.3s ease;
 }
 
-/* When chart is not shown, make entries container taller */
 .chart-container + .entries-cntn {
   height: 250px;
 }

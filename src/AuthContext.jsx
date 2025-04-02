@@ -35,7 +35,6 @@ export function AuthProvider({ children }) {
         // Store user in localStorage
         localStorage.setItem('fittrack_user', JSON.stringify(newUser))
 
-        // Store in users array (for multiple users)
         const users = JSON.parse(localStorage.getItem('fittrack_users') || '[]')
         users.push({ ...newUser, password })
         localStorage.setItem('fittrack_users', JSON.stringify(users))
