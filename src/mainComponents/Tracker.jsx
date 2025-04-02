@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../AuthContext'
 import FormOverlay from './FormOverlay'
 import DeleteOverlay from './DeleteOverlay'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
@@ -9,15 +11,18 @@ import filter from '../assets/filter.svg'
 import calendar from '../assets/calendar.svg'
 import duration from '../assets/duration.svg'
 import trash from '../assets/trash.svg'
+import '../Tracker.css'
 
 function Tracker() {
+  const navigate = useNavigate()
+  const { currentUser, logout } = useAuth()
   const entries = useSelector((state) => state.fitness.entries)
   const [isFormOverlayOpen, setIsFormOverlayOpen] = useState(false)
   const [isDeleteOverlayOpen, setIsDeleteOverlayOpen] = useState(false)
   const [deleteId, setDeleteId] = useState(0)
   const [chartData, setChartData] = useState([])
   const [filterType, setFilterType] = useState('All')
-  const [showChart, setShowChart] = useState(false) // State to control chart visibility
+  const [showChart, setShowChart] = useState(false)
 
   useEffect(() => {
     // Process data for the chart
@@ -65,13 +70,23 @@ function Tracker() {
     setShowChart(!showChart)
   }
 
+  const handleLogout = async () => {
+    await logout()
+    navigate('/')
+  }
+
+  const handleGoToHome = () => {
+    navigate('/')
+  }
+
   const totalDuration = () => {
+    if (!entries || entries.length === 0) return '0mins'
+
     const duration = entries.map((entry) => entry.duration).reduce((acc, num) => +acc + +num, 0)
 
     if (duration >= 60) {
       const hours = Math.floor(duration / 60)
       const minutes = duration % 60
-
       return `${hours}hr${hours !== 1 ? 's' : ''}, ${minutes}min${minutes !== 1 ? 's' : ''}`
     } else {
       return `${duration}min${duration !== 1 ? 's' : ''}`
@@ -81,7 +96,7 @@ function Tracker() {
   return (
     <main className="main">
       <div className="nav-cntn">
-        <div className="logo">
+        <div className="logo" onClick={handleGoToHome} style={{ cursor: 'pointer' }}>
           <div className="logo-icon">
             <div className="dumbbell-bar"></div>
             <div className="dumbbell-weight left"></div>
@@ -89,14 +104,29 @@ function Tracker() {
           </div>
           <span className="logo-text">FitTrack</span>
         </div>
-        <div className="button-cntn">
-          <button className={`sec-button ${showChart ? 'active' : ''}`} onClick={toggleChart}>
-            View Tracker
-          </button>
-          <button className="pri-button" onClick={() => setIsFormOverlayOpen(true)}>
-            Add workout
-          </button>
-          <FormOverlay isOpen={isFormOverlayOpen} onClose={() => setIsFormOverlayOpen(false)} />
+        <div className="user-controls">
+          {currentUser && (
+            <div className="user-info">
+              <span>Hello, {currentUser.name}</span>
+              <button className="logout-button" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          )}
+          <div className="button-cntn">
+            <button className={`sec-button ${showChart ? 'active' : ''}`} onClick={toggleChart}>
+              View Tracker
+            </button>
+            <button className="pri-button" onClick={() => setIsFormOverlayOpen(true)}>
+              Add workout
+            </button>
+            <FormOverlay isOpen={isFormOverlayOpen} onClose={() => setIsFormOverlayOpen(false)} />
+            <DeleteOverlay
+              deleteId={deleteId}
+              isOpen={isDeleteOverlayOpen}
+              onClose={() => setIsDeleteOverlayOpen(false)}
+            />
+          </div>
         </div>
       </div>
 
@@ -124,7 +154,7 @@ function Tracker() {
         </div>
       )}
 
-      <section className="entries-cntn">
+      <section className={`entries-cntn ${!showChart ? 'expanded' : ''}`}>
         <div className="text-cntn">
           <h2>All Workouts</h2>
           <div className="filter">
@@ -141,8 +171,13 @@ function Tracker() {
             </select>
           </div>
         </div>
-        {entries.length === 0 ? (
-          <p>No workouts logged yet.</p>
+        {!entries || entries.length === 0 ? (
+          <div className="no-workouts">
+            <p>No workouts logged yet.</p>
+            <button className="add-first-workout" onClick={() => setIsFormOverlayOpen(true)}>
+              Add your first workout
+            </button>
+          </div>
         ) : (
           <div className="workout-cards">
             {entries
@@ -163,11 +198,6 @@ function Tracker() {
                         <img src={trash || '/placeholder.svg'} alt="trash-icon" />
                         <p>delete</p>
                       </button>
-                      <DeleteOverlay
-                        deleteId={deleteId}
-                        isOpen={isDeleteOverlayOpen}
-                        onClose={() => setIsDeleteOverlayOpen(false)}
-                      />
                     </div>
                     <div className="down">
                       <div className="duration-cntn">

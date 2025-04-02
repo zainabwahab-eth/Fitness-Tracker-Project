@@ -2,13 +2,12 @@
   box-sizing: border-box;
   padding: 0%;
   margin: 0%;
-  font-family: "Urbanist", sans-serif;
+  font-family: 'Urbanist', sans-serif;
 }
 
 .header {
   background: url(../assets/background.jpeg);
 }
-
 
 .head {
   background-color: #f8f9fa;
@@ -47,7 +46,6 @@
   font-size: 28px;
   margin-bottom: 2rem;
   text-align: center;
-
 }
 
 .feature-content-1,
@@ -104,7 +102,6 @@ span {
 
 .step h3 {
   font-size: 1rem;
-
 }
 
 .step p {
