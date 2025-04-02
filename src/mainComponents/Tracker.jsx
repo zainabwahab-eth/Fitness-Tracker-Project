@@ -11,7 +11,6 @@ import filter from '../assets/filter.svg'
 import calendar from '../assets/calendar.svg'
 import duration from '../assets/duration.svg'
 import trash from '../assets/trash.svg'
-import '../Tracker.css'
 
 function Tracker() {
   const navigate = useNavigate()
