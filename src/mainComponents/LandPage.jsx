@@ -11,6 +11,7 @@ const LandPage = () => {
   const { isAuthenticated, logout } = useAuth()
   const navigate = useNavigate()
 
+  // eslint-disable-next-line no-unused-vars
   const handleSignupClick = () => {
     navigate('/signup')
   }

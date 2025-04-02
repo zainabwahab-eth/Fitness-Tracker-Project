@@ -80,6 +80,7 @@ const SignupPage = () => {
         // Use the signup function from AuthContext
         await signup(formData.name, formData.email, formData.password)
         navigate('/tracker')
+        // eslint-disable-next-line no-unused-vars
       } catch (err) {
         setGeneralError('Failed to create an account. Please try again.')
         document.getElementById('signup-form').classList.add('shake')

@@ -48,6 +48,7 @@ export function AuthProvider({ children }) {
 
   // Login function
   const login = (email, name) => {
+    // eslint-disable-next-line no-unused-vars
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Get users from localStorage
@@ -58,6 +59,7 @@ export function AuthProvider({ children }) {
 
         if (user) {
           // Store the current user (without password)
+          // eslint-disable-next-line no-unused-vars
           const { password, ...userWithoutPassword } = user
           localStorage.setItem('fittrack_user', JSON.stringify(userWithoutPassword))
           setCurrentUser(userWithoutPassword)
