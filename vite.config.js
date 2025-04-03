@@ -1,18 +1,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { visualizer } from "rollup-plugin-visualizer"; // Optional
-import viteImagemin from "vite-plugin-imagemin"; // Optional
+import { visualizer } from "rollup-plugin-visualizer";
+import viteImagemin from "vite-plugin-imagemin";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     visualizer({
-      open: true, // Auto-open bundle analysis
+      open: true,
       gzipSize: true,
       brotliSize: true,
     }),
-    viteImagemin({ // Image optimization (optional)
+    viteImagemin({ // Image optimization 
       gifsicle: { optimizationLevel: 3 },
       mozjpeg: { quality: 80 },
       optipng: { optimizationLevel: 5 },
@@ -48,22 +48,9 @@ export default defineConfig({
           redux: ["@reduxjs/toolkit", "react-redux"],
           charts: ["recharts"],
           formik: ["formik", "yup"]
-          // Removed 'vendor' chunk unless you need it
         }
       }
     }
   }
 });
 
-
-// import { defineConfig } from "vite";
-// import react from "@vitejs/plugin-react";
-
-// // https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-//   base: "/",
-//   server: {
-//     historyApiFallback: true, // Helps Vite serve `index.html` for all routes
-//   }, // Ensures correct routing
-// });

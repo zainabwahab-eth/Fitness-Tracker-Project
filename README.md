@@ -22,3 +22,10 @@ FitTrack is a simple, intuitive fitness tracking application that helps users lo
 ## Installation and Setup
 
 1. **Clone the repository**
+
+2. **Run**
+   npm install
+
+3. **Start App**
+   Run
+   npm start dev
