@@ -1,236 +1,82 @@
-// import React, { useState } from "react";
+// import React, { useState, useEffect } from "react";
 
-// const maleWorkouts = [
-//       "Bench Press", "Deadlifts", "Pull-ups", "Bicep Curls", "Shoulder Press",
-//       "Squats", "Running", "Boxing", "HIIT", "Kettlebell Swings"
-//     ];
-    
-//     const femaleWorkouts = [
-//       "Squats", "Lunges", "Yoga", "Pilates", "Stretching",
-//       "Jump Rope", "Stair Climbing", "Cycling", "Swimming", "HIIT"
-//     ];
-
-// const WorkoutForm = ({ addWorkout }) => {
-//   const [workout, setWorkout] = useState({
-//     name: "",
-//     duration: 0,
-//     date: "",
-//     gender: "male",
-//   });
-
-//   const [isTracking, setIsTracking] = useState(false);
+// const WorkoutForm = ({ onAddWorkout, setShowForm }) => {
+//   const [gender, setGender] = useState("");
+//   const [workout, setWorkout] = useState("");
+//   const [date, setDate] = useState("");
+//   const [duration, setDuration] = useState(0);
+//   const [timerActive, setTimerActive] = useState(false);
 //   const [startTime, setStartTime] = useState(null);
 
-//   const handleChange = (e) => {
-//     setWorkout({ ...workout, [e.target.name]: e.target.value });
-//   };
+//   const maleWorkouts = ["Push-ups", "Pull-ups", "Deadlifts", "Running"];
+//   const femaleWorkouts = ["Yoga", "Pilates", "Jump Rope", "Squats"];
 
-//   const startWorkout = () => {
-//     setStartTime(Date.now());
-//     setIsTracking(true);
-//   };
-
-//   const stopWorkout = () => {
-//     if (startTime) {
-//       const durationInMinutes = Math.round((Date.now() - startTime) / 60000);
-//       setWorkout({ ...workout, duration: durationInMinutes });
-//       setIsTracking(false);
+//   useEffect(() => {
+//     let interval;
+//     if (timerActive) {
+//       setStartTime(Date.now()); // Set start time when timer starts
+//       interval = setInterval(() => {
+//         setDuration((prevDuration) => prevDuration + 1); // Increase duration every minute
+//       },6000); // 6,000ms = a second
+//     } else {
+//       clearInterval(interval);
 //     }
+//     return () => clearInterval(interval); // Cleanup when unmounting
+//   }, [timerActive]);
+
+//   const handleTimer = () => {
+//     if (timerActive) {
+//       const totalTime = Math.floor((Date.now() - startTime) / 60000); // Convert ms to minutes
+//       setDuration(totalTime);
+//     }
+//     setTimerActive(!timerActive);
 //   };
 
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
-//     if (!workout.name || !workout.date) {
+//     if (!gender || !workout || !date || duration === 0) {
 //       alert("Please fill in all fields!");
 //       return;
 //     }
-//     addWorkout(workout);
-//     setWorkout({ name: "", duration: 0, date: "", gender: "male" });
+
+//     const newWorkout = { gender, workout, date, duration };
+
+//     onAddWorkout(newWorkout);
+//     setShowForm(false);
 //   };
 
 //   return (
-//     <form onSubmit={handleSubmit} className="workout-form">
-//       <label>Gender:</label>
-//       <select name="gender" value={workout.gender} onChange={handleChange}>
-//         <option value="male">Male</option>
-//         <option value="female">Female</option>
-//       </select>
+//     <div className="form-container">
+//       <h2>Add Workout</h2>
+//       <form onSubmit={handleSubmit}>
+//         <label>Gender:</label>
+//         <select value={gender} onChange={(e) => setGender(e.target.value)}>
+//           <option value="">Select Gender</option>
+//           <option value="male">Male</option>
+//           <option value="female">Female</option>
+//         </select>
 
-//       <label>Workout Type:</label>
-//       <input type="text" name="name" value={workout.name} onChange={handleChange} />
+//         <label>Workout Type:</label>
+//         <select value={workout} onChange={(e) => setWorkout(e.target.value)}>
+//           <option value="">Select Workout</option>
+//           {gender === "male" &&
+//             maleWorkouts.map((w, index) => <option key={index}>{w}</option>)}
+//           {gender === "female" &&
+//             femaleWorkouts.map((w, index) => <option key={index}>{w}</option>)}
+//         </select>
 
-//       <label>Workout Date:</label>
-//       <input type="date" name="date" value={workout.date} onChange={handleChange} />
+//         <label>Date:</label>
+//         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
 
-//       <button type="button" onClick={startWorkout} className="start-btn">Start Workout</button>
-//       {isTracking && <button type="button" onClick={stopWorkout} className="stop-btn">Stop Workout</button>}
+//         <label>Duration: {duration} min</label>
+//         <button type="button" onClick={handleTimer}>
+//           {timerActive ? "Stop Timer" : "Start Timer"}
+//         </button>
 
-//       <p>Duration: {workout.duration} mins</p>
-
-//       <button type="submit" className="save-btn">Save Workout</button>
-//     </form>
+//         <button type="submit">Save Workout</button>
+//       </form>
+//     </div>
 //   );
 // };
 
 // export default WorkoutForm;
-
-
-
-
-
-// import React, { useState } from "react";
-
-// const WorkoutForm = ({ addWorkout }) => {
-//   const [workout, setWorkout] = useState({
-//     name: "",
-//     startTime: "",
-//     duration: 0,
-//     date: "",
-//     gender: "male",
-//   });
-
-//   const [isTracking, setIsTracking] = useState(false);
-//   const [startTime, setStartTime] = useState(null);
-
-//   const maleWorkouts = [
-//     "Bench Press", "Deadlifts", "Pull-ups", "Bicep Curls", "Shoulder Press",
-//     "Squats", "Running", "Boxing", "HIIT", "Kettlebell Swings"
-//   ];
-
-//   const femaleWorkouts = [
-//     "Squats", "Lunges", "Yoga", "Pilates", "Stretching",
-//     "Jump Rope", "Stair Climbing", "Cycling", "Swimming", "HIIT"
-//   ];
-
-//   const handleChange = (e) => {
-//     setWorkout({ ...workout, [e.target.name]: e.target.value });
-//   };
-
-//   const startWorkout = () => {
-//     setStartTime(Date.now());
-//     setIsTracking(true);
-//   };
-
-//   const stopWorkout = () => {
-//     if (startTime) {
-//       const durationInMinutes = Math.round((Date.now() - startTime) / 60000);
-//       setWorkout({ ...workout, duration: durationInMinutes });
-//       setIsTracking(false);
-//     }
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (!workout.name || !workout.date) {
-//       alert("Please fill in all fields!");
-//       return;
-//     }
-//     addWorkout(workout);
-//     setWorkout({ name: "", startTime: "", duration: 0, date: "", gender: "male" });
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit} className="workout-form">
-//       <label>Gender:</label>
-//       <select name="gender" value={workout.gender} onChange={handleChange}>
-//         <option value="male">Male</option>
-//         <option value="female">Female</option>
-//       </select>
-
-//       <label>Workout Type:</label>
-//       <select name="name" value={workout.name} onChange={handleChange}>
-//         {workout.gender === "male"
-//           ? maleWorkouts.map((exercise, index) => (
-//               <option key={index} value={exercise}>{exercise}</option>
-//             ))
-//           : femaleWorkouts.map((exercise, index) => (
-//               <option key={index} value={exercise}>{exercise}</option>
-//             ))}
-//       </select>
-
-//       <label>Workout Date:</label>
-//       <input type="date" name="date" value={workout.date} onChange={handleChange} />
-
-//       <button type="button" onClick={startWorkout}>Start Workout</button>
-//       {isTracking && <button type="button" onClick={stopWorkout}>Stop Workout</button>}
-
-//       <p>Duration: {workout.duration} mins</p>
-
-//       <button type="submit">Save Workout</button>
-//     </form>
-//   );
-// };
-
-// export default WorkoutForm;
-
-
-
-
-
-import React, { useState } from "react";
-
-const WorkoutForm = ({ addWorkout }) => {
-  const [workout, setWorkout] = useState({ name: "", duration: 0, date: "", gender: "male" });
-  const [isTracking, setIsTracking] = useState(false);
-  const [startTime, setStartTime] = useState(null);
-
-  const maleWorkouts = ["Bench Press", "Deadlifts", "Pull-ups", "Squats", "Running"];
-  const femaleWorkouts = ["Yoga", "Pilates", "Jump Rope", "Cycling", "Swimming"];
-
-  const handleChange = (e) => {
-    setWorkout({ ...workout, [e.target.name]: e.target.value });
-  };
-
-  const startWorkout = () => {
-    setStartTime(Date.now());
-    setIsTracking(true);
-  };
-
-  const stopWorkout = () => {
-    if (startTime) {
-      const durationInMinutes = Math.round((Date.now() - startTime) / 60000);
-      setWorkout((prev) => ({ ...prev, duration: durationInMinutes }));
-      setIsTracking(false);
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!workout.name || !workout.date) {
-      alert("Please fill in all fields!");
-      return;
-    }
-    addWorkout(workout);
-    setWorkout({ name: "", duration: 0, date: "", gender: "male" });
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="workout-form">
-      <label>Gender:</label>
-      <select name="gender" value={workout.gender} onChange={handleChange}>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-
-      <label>Workout Type:</label>
-      <select name="name" value={workout.name} onChange={handleChange}>
-        <option value="">Select a workout</option>
-        {workout.gender === "male"
-          ? maleWorkouts.map((exercise, index) => <option key={index} value={exercise}>{exercise}</option>)
-          : femaleWorkouts.map((exercise, index) => <option key={index} value={exercise}>{exercise}</option>)}
-      </select>
-
-      <label>Workout Date:</label>
-      <input type="date" name="date" value={workout.date} onChange={handleChange} />
-
-      <button type="button" onClick={startWorkout}>Start Workout</button>
-      {isTracking && <button type="button" onClick={stopWorkout}>Stop Workout</button>}
-
-      <p>Duration: {workout.duration} mins</p>
-
-      <button type="submit">Save Workout</button>
-    </form>
-  );
-};
-
-export default WorkoutForm;
