@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -11,6 +13,7 @@ import filter from '../assets/filter.svg'
 import calendar from '../assets/calendar.svg'
 import duration from '../assets/duration.svg'
 import trash from '../assets/trash.svg'
+import '../Tracker.css'
 
 function Tracker() {
   const navigate = useNavigate()
@@ -22,6 +25,23 @@ function Tracker() {
   const [chartData, setChartData] = useState([])
   const [filterType, setFilterType] = useState('All')
   const [showChart, setShowChart] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Add mobile detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    // Set initial value
+    handleResize()
+
+    // Add event listener
+    window.addEventListener('resize', handleResize)
+
+    // Clean up
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     // Process data for the chart
@@ -114,17 +134,11 @@ function Tracker() {
           )}
           <div className="button-cntn">
             <button className={`sec-button ${showChart ? 'active' : ''}`} onClick={toggleChart}>
-              View Tracker
+              {showChart ? 'Hide Chart' : 'Show Chart'}
             </button>
             <button className="pri-button" onClick={() => setIsFormOverlayOpen(true)}>
               Add workout
             </button>
-            <FormOverlay isOpen={isFormOverlayOpen} onClose={() => setIsFormOverlayOpen(false)} />
-            <DeleteOverlay
-              deleteId={deleteId}
-              isOpen={isDeleteOverlayOpen}
-              onClose={() => setIsDeleteOverlayOpen(false)}
-            />
           </div>
         </div>
       </div>
@@ -138,11 +152,27 @@ function Tracker() {
         <div className="chart-container">
           <h3>Workout Duration by Date</h3>
           {chartData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={200}>
-              <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+            <ResponsiveContainer width="100%" height={isMobile ? 150 : 200}>
+              <BarChart
+                data={chartData}
+                margin={
+                  isMobile
+                    ? { top: 10, right: 10, left: 0, bottom: 20 }
+                    : { top: 20, right: 30, left: 20, bottom: 20 }
+                }
+              >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" tick={{ fontSize: 12 }} />
-                <YAxis label={{ value: 'Minutes', angle: -90, position: 'insideLeft' }} />
+                <XAxis
+                  dataKey="date"
+                  tick={{ fontSize: isMobile ? 10 : 12 }}
+                  angle={isMobile ? -45 : 0}
+                  textAnchor={isMobile ? 'end' : 'middle'}
+                  height={50}
+                />
+                <YAxis
+                  label={isMobile ? null : { value: 'Minutes', angle: -90, position: 'insideLeft' }}
+                  tick={{ fontSize: isMobile ? 10 : 12 }}
+                />
                 <Tooltip formatter={(value) => [`${value} mins`, 'Duration']} />
                 <Bar dataKey="duration" fill="#76DF02" radius={[4, 4, 0, 0]} />
               </BarChart>
@@ -157,7 +187,14 @@ function Tracker() {
         <div className="text-cntn">
           <h2>All Workouts</h2>
           <div className="filter">
-            <img src={filter || '/placeholder.svg'} alt="Filter Icon" />
+            <img
+              src={filter || '/placeholder.svg?height=24&width=24'}
+              alt="Filter Icon"
+              onError={(e) => {
+                e.target.onerror = null
+                e.target.src = '/placeholder.svg?height=24&width=24'
+              }}
+            />
             <select
               className="type-filter"
               name="type"
@@ -187,24 +224,59 @@ function Tracker() {
                     <div className="top">
                       <div className="type-cntn">
                         {entry.type === 'Run' ? (
-                          <img src={run || '/placeholder.svg'} alt="type-icon" />
+                          <img
+                            src={run || '/placeholder.svg?height=24&width=24'}
+                            alt="type-icon"
+                            onError={(e) => {
+                              e.target.onerror = null
+                              e.target.src = '/placeholder.svg?height=24&width=24'
+                            }}
+                          />
                         ) : (
-                          <img src={lift || '/placeholder.svg'} alt="type-icon" />
+                          <img
+                            src={lift || '/placeholder.svg?height=24&width=24'}
+                            alt="type-icon"
+                            onError={(e) => {
+                              e.target.onerror = null
+                              e.target.src = '/placeholder.svg?height=24&width=24'
+                            }}
+                          />
                         )}
                         <p>{entry.type}</p>
                       </div>
                       <button className="delete-btn" onClick={() => handleDeleteClick(entry.id)}>
-                        <img src={trash || '/placeholder.svg'} alt="trash-icon" />
+                        <img
+                          src={trash || '/placeholder.svg?height=24&width=24'}
+                          alt="trash-icon"
+                          onError={(e) => {
+                            e.target.onerror = null
+                            e.target.src = '/placeholder.svg?height=24&width=24'
+                          }}
+                        />
                         <p>delete</p>
                       </button>
                     </div>
                     <div className="down">
                       <div className="duration-cntn">
-                        <img src={duration || '/placeholder.svg'} alt="duration-icon" />
+                        <img
+                          src={duration || '/placeholder.svg?height=24&width=24'}
+                          alt="duration-icon"
+                          onError={(e) => {
+                            e.target.onerror = null
+                            e.target.src = '/placeholder.svg?height=24&width=24'
+                          }}
+                        />
                         <p>{`${entry.duration} mins`}</p>
                       </div>
                       <div className="calendar-cntn">
-                        <img src={calendar || '/placeholder.svg'} alt="calendar-icon" />
+                        <img
+                          src={calendar || '/placeholder.svg?height=24&width=24'}
+                          alt="calendar-icon"
+                          onError={(e) => {
+                            e.target.onerror = null
+                            e.target.src = '/placeholder.svg?height=24&width=24'
+                          }}
+                        />
                         <p>{entry.date}</p>
                       </div>
                     </div>
@@ -214,6 +286,13 @@ function Tracker() {
           </div>
         )}
       </section>
+
+      <FormOverlay isOpen={isFormOverlayOpen} onClose={() => setIsFormOverlayOpen(false)} />
+      <DeleteOverlay
+        deleteId={deleteId}
+        isOpen={isDeleteOverlayOpen}
+        onClose={() => setIsDeleteOverlayOpen(false)}
+      />
     </main>
   )
 }
