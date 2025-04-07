@@ -17,21 +17,26 @@ export default App
 
 
 
+// import { useSelector } from "react-redux";
+// import ThemeToggle from "./components/ThemeToggle"; // update path accordingly
+// import './App.css'; // or wherever your general styles are
 
-// import { useSelector } from 'react-redux';  
-// import { AuthProvider } from './AuthContext';
-// import AppRoutes from './AppRoutes';
-// import './App.css'; 
+// const App = () => {
+//   const darkMode = useSelector((state) => state.theme.darkMode);
 
-// function App() {
-//   const darkMode = useSelector((state) => state.theme.darkMode); 
+//   // Dynamically add/remove dark class from body
+//   React.useEffect(() => {
+//     document.body.className = darkMode ? "dark-mode" : "";
+//   }, [darkMode]);
+
 //   return (
-//     <AuthProvider>
-//       <div className={darkMode ? 'dark-mode' : ''}>
-//         <AppRoutes />
-//       </div>
-//     </AuthProvider>
+//     <div>
+//       <nav>
+//         <ThemeToggle />
+//       </nav>
+//       {/* rest of your app */}
+//     </div>
 //   );
-// }
+// };
 
 // export default App;

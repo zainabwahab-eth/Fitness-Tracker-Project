@@ -25,3 +25,36 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>
 )
+
+
+
+// import React from 'react';
+// import ReactDOM from 'react-dom/client';
+// import { BrowserRouter as Router } from 'react-router-dom';
+// import { Provider } from 'react-redux';
+// import store from './redux/store';  // Import the combined store
+// import App from './App';
+// import './index.css';
+
+// // Add error handling for image loading
+// const handleImageError = (e) => {
+//   e.target.onerror = null;
+//   e.target.src = '/placeholder.svg?height=24&width=24';
+// };
+
+// window.handleImageError = handleImageError;
+
+// ReactDOM.createRoot(document.getElementById('root')).render(
+//   <React.StrictMode>
+//     <Provider store={store}>
+//       <Router>
+//         <App />
+//       </Router>
+//     </Provider>
+//   </React.StrictMode>
+// );
+
+
+
+
+

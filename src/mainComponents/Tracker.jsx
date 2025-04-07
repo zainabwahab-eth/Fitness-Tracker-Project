@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+// import ThemeToggle from '../components/ThemeToggle'
 import { useAuth } from '../AuthContext'
 import FormOverlay from './FormOverlay'
 import DeleteOverlay from './DeleteOverlay'
@@ -11,6 +12,9 @@ import filter from '../assets/filter.svg'
 import calendar from '../assets/calendar.svg'
 import duration from '../assets/duration.svg'
 import trash from '../assets/trash.svg'
+
+
+
 
 function Tracker() {
   const navigate = useNavigate()
@@ -130,6 +134,9 @@ function Tracker() {
             </div>
           )}
           <div className="button-cntn">
+
+           {/* <ThemeToggle /> Add your toggle button here */}
+
             <button className={`sec-button ${showChart ? 'active' : ''}`} onClick={toggleChart}>
               {showChart ? 'Hide Chart' : 'Show Chart'}
             </button>
