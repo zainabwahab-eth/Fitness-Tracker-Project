@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-// import ThemeToggle from '../components/ThemeToggle'
 import { useAuth } from '../AuthContext'
 import FormOverlay from './FormOverlay'
 import DeleteOverlay from './DeleteOverlay'
@@ -12,11 +11,28 @@ import filter from '../assets/filter.svg'
 import calendar from '../assets/calendar.svg'
 import duration from '../assets/duration.svg'
 import trash from '../assets/trash.svg'
+import { useDispatch, useSelector } from 'react-redux'
+// feyisara added
+import { toggleDarkMode } from "./redux/uiSlice";  
+// added end
+
 
 
 
 
 function Tracker() {
+
+  // feyisara added
+  const dispatch = useDispatch();
+  const isDarkMode = useSelector((state) => state.ui.darkMode);
+  const streak = useSelector((state) => state.fitness.streak);
+
+  const handleThemeToggle = () => {
+  console.log("Toggling dark mode: ", isDarkMode);
+  dispatch(toggleDarkMode());
+};
+  // added end
+
   const navigate = useNavigate()
   const { currentUser, logout } = useAuth()
   const entries = useSelector((state) => state.fitness.entries)
@@ -27,6 +43,18 @@ function Tracker() {
   const [filterType, setFilterType] = useState('All')
   const [showChart, setShowChart] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+
+
+   // feyisara added
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+  // added end
+
 
   // Add mobile detection
   useEffect(() => {
@@ -116,6 +144,13 @@ function Tracker() {
   return (
     <main className="main">
       <div className="nav-cntn">
+
+        {/* feyisara added */}
+        <button className="sec-button" onClick={handleThemeToggle}>
+         {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+        </button>
+         {/* added end */}
+
         <div className="logo" onClick={handleGoToHome} style={{ cursor: 'pointer' }}>
           <div className="logo-icon">
             <div className="dumbbell-bar"></div>
@@ -124,6 +159,7 @@ function Tracker() {
           </div>
           <span className="logo-text">FitTrack</span>
         </div>
+
         <div className="user-controls">
           {currentUser && (
             <div className="user-info">
@@ -133,17 +169,21 @@ function Tracker() {
               </button>
             </div>
           )}
+          
           <div className="button-cntn">
-
-           {/* <ThemeToggle /> Add your toggle button here */}
-
             <button className={`sec-button ${showChart ? 'active' : ''}`} onClick={toggleChart}>
               {showChart ? 'Hide Chart' : 'Show Chart'}
             </button>
             <button className="pri-button" onClick={() => setIsFormOverlayOpen(true)}>
               Add workout
             </button>
-          </div>
+          </div> 
+
+           {/* feyisara added */}
+           <div className="streak-display">
+          <h3>🔥 Streak: {streak} {streak === 1 ? 'day' : 'days'}</h3>
+           </div>
+           {/* added end */}
         </div>
       </div>
 

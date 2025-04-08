@@ -11,6 +11,13 @@
   width: calc(100% - 40px);
 }
 
+/* Added by feyisara */
+body.dark {
+  background-color: #333;
+  color: white;
+}
+/* addding end */
+
 .nav-cntn {
   display: flex;
   align-items: center;
@@ -65,6 +72,16 @@
   color: #333;
   letter-spacing: 0.5px;
 }
+
+/* .streak-display {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #ffb347;
+  font-weight: bold;
+  font-size: 1.1rem;
+} */
+
 
 .button-cntn {
   display: flex;
@@ -255,6 +272,27 @@
   font-size: 16px;
   font-weight: 600;
 }
+/* feyisara add */
+.streak-display {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #76df02;
+}
+
+.streak-display h3 {
+  font-weight: bold;
+  color: #76df02;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+/* add end */
 
 .duration-cntn p {
   font-size: 14px;
