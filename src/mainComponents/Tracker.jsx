@@ -13,29 +13,18 @@ import duration from '../assets/duration.svg'
 import trash from '../assets/trash.svg'
 import { useDispatch, useSelector } from 'react-redux'
 // feyisara added
-import { toggleDarkMode } from "./redux/uiSlice";  
+import { toggleDarkMode } from './redux/uiSlice'
 // added end
-
-
-
-
-
 function Tracker() {
-
-  // feyisara added
-  const dispatch = useDispatch();
-  const isDarkMode = useSelector((state) => state.ui.darkMode);
-  const streak = useSelector((state) => state.fitness.streak);
-
-  const handleThemeToggle = () => {
-  console.log("Toggling dark mode: ", isDarkMode);
-  dispatch(toggleDarkMode());
-};
-  // added end
-
   const navigate = useNavigate()
   const { currentUser, logout } = useAuth()
-  const entries = useSelector((state) => state.fitness.entries)
+  const dispatch = useDispatch()
+
+  // Get data from Redux store with safe fallbacks
+  const entries = useSelector((state) => state.fitness?.entries || [])
+  const isDarkMode = useSelector((state) => state.ui?.darkMode || false)
+  const streak = useSelector((state) => state.fitness?.streak || 0)
+
   const [isFormOverlayOpen, setIsFormOverlayOpen] = useState(false)
   const [isDeleteOverlayOpen, setIsDeleteOverlayOpen] = useState(false)
   const [deleteId, setDeleteId] = useState(0)
@@ -44,17 +33,14 @@ function Tracker() {
   const [showChart, setShowChart] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
-
-   // feyisara added
+  // Add dark mode class to body
   useEffect(() => {
     if (isDarkMode) {
-      document.body.classList.add("dark");
+      document.body.classList.add('dark')
     } else {
-      document.body.classList.remove("dark");
+      document.body.classList.remove('dark')
     }
-  }, [isDarkMode]);
-  // added end
-
+  }, [isDarkMode])
 
   // Add mobile detection
   useEffect(() => {
@@ -80,13 +66,24 @@ function Tracker() {
 
       // Filter entries if needed
       const filteredEntries =
-        filterType === 'All' ? entries : entries.filter((entry) => entry.type === filterType)
+        filterType === 'All'
+          ? entries
+          : entries.filter((entry) => {
+              if (filterType === 'Run' || filterType === 'Lift') {
+                return entry.type === filterType
+              }
+              if (filterType.startsWith('specific:')) {
+                const specificWorkout = filterType.split(':')[1]
+                return entry.details?.specificWorkout === specificWorkout
+              }
+              return true
+            })
 
       filteredEntries.forEach((entry) => {
         if (!groupedByDate[entry.date]) {
           groupedByDate[entry.date] = 0
         }
-        groupedByDate[entry.date] += Number.parseInt(entry.duration)
+        groupedByDate[entry.date] += Number(entry.duration)
       })
 
       // Convert to array format for the chart
@@ -118,6 +115,10 @@ function Tracker() {
     setShowChart(!showChart)
   }
 
+  const handleThemeToggle = () => {
+    dispatch(toggleDarkMode())
+  }
+
   const handleLogout = async () => {
     await logout()
     navigate('/')
@@ -130,7 +131,7 @@ function Tracker() {
   const totalDuration = () => {
     if (!entries || entries.length === 0) return '0mins'
 
-    const duration = entries.map((entry) => entry.duration).reduce((acc, num) => +acc + +num, 0)
+    const duration = entries.reduce((acc, entry) => acc + Number(entry.duration), 0)
 
     if (duration >= 60) {
       const hours = Math.floor(duration / 60)
@@ -144,12 +145,9 @@ function Tracker() {
   return (
     <main className="main">
       <div className="nav-cntn">
-
-        {/* feyisara added */}
         <button className="sec-button" onClick={handleThemeToggle}>
-         {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+          {isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
         </button>
-         {/* added end */}
 
         <div className="logo" onClick={handleGoToHome} style={{ cursor: 'pointer' }}>
           <div className="logo-icon">
@@ -159,7 +157,6 @@ function Tracker() {
           </div>
           <span className="logo-text">FitTrack</span>
         </div>
-
         <div className="user-controls">
           {currentUser && (
             <div className="user-info">
@@ -169,7 +166,6 @@ function Tracker() {
               </button>
             </div>
           )}
-          
           <div className="button-cntn">
             <button className={`sec-button ${showChart ? 'active' : ''}`} onClick={toggleChart}>
               {showChart ? 'Hide Chart' : 'Show Chart'}
@@ -177,13 +173,13 @@ function Tracker() {
             <button className="pri-button" onClick={() => setIsFormOverlayOpen(true)}>
               Add workout
             </button>
-          </div> 
+          </div>
 
-           {/* feyisara added */}
-           <div className="streak-display">
-          <h3>🔥 Streak: {streak} {streak === 1 ? 'day' : 'days'}</h3>
-           </div>
-           {/* added end */}
+          <div className="streak-display">
+            <h3>
+              🔥 Streak: {streak} {streak === 1 ? 'day' : 'days'}
+            </h3>
+          </div>
         </div>
       </div>
 
@@ -245,9 +241,20 @@ function Tracker() {
               value={filterType}
               onChange={handleFilterChange}
             >
-              <option value="All">All Workout</option>
+              <option value="All">All Workouts</option>
               <option value="Run">Run</option>
               <option value="Lift">Lift</option>
+              {/* Add a divider */}
+              <option disabled>──────────</option>
+              {/* Add specific workout types */}
+              <option value="specific:Push-ups">Push-ups</option>
+              <option value="specific:Pull-ups">Pull-ups</option>
+              <option value="specific:Deadlifts">Deadlifts</option>
+              <option value="specific:Running">Running</option>
+              <option value="specific:Yoga">Yoga</option>
+              <option value="specific:Pilates">Pilates</option>
+              <option value="specific:Jump Rope">Jump Rope</option>
+              <option value="specific:Squats">Squats</option>
             </select>
           </div>
         </div>
@@ -261,7 +268,15 @@ function Tracker() {
         ) : (
           <div className="workout-cards">
             {entries
-              .filter((entry) => filterType === 'All' || entry.type === filterType)
+              .filter((entry) => {
+                if (filterType === 'All') return true
+                if (filterType === 'Run' || filterType === 'Lift') return entry.type === filterType
+                if (filterType.startsWith('specific:')) {
+                  const specificWorkout = filterType.split(':')[1]
+                  return entry.details?.specificWorkout === specificWorkout
+                }
+                return true
+              })
               .map((entry) => (
                 <article key={entry.id} className="workout-card">
                   <li>
@@ -286,7 +301,7 @@ function Tracker() {
                             }}
                           />
                         )}
-                        <p>{entry.type}</p>
+                        <p>{entry.details?.specificWorkout || entry.type}</p>
                       </div>
                       <button className="delete-btn" onClick={() => handleDeleteClick(entry.id)}>
                         <img
@@ -332,6 +347,7 @@ function Tracker() {
       </section>
 
       <FormOverlay isOpen={isFormOverlayOpen} onClose={() => setIsFormOverlayOpen(false)} />
+
       <DeleteOverlay
         deleteId={deleteId}
         isOpen={isDeleteOverlayOpen}

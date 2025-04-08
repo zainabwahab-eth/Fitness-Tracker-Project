@@ -1,33 +1,37 @@
-import React, { useState } from "react";
-import "./overlay.css";
-import { useDispatch } from "react-redux";
-import { deleteEntry } from "./redux/fitnessSlice";
+'use client'
+import React, { useState } from 'react'
+import './DeleteOverlay.css'
+import { useDispatch } from 'react-redux'
+import { deleteEntry } from './redux/fitnessSlice'
 
-function DeleteOverlay({ isOpen, onClose, deleteId }) {
-  if (!isOpen) return null;
+function DeleteOverlay({ deleteId, isOpen, onClose }) {
+  const dispatch = useDispatch()
 
-  const dispatch = useDispatch();
+  if (!isOpen) return null
 
-  const handleDeleteEntry = () => {
-    dispatch(deleteEntry(deleteId));
-    onClose();
-  };
+  const handleDelete = () => {
+    dispatch(deleteEntry(deleteId))
+    onClose()
+  }
 
   return (
-    <div className="delete-overlay" onClick={onClose}>
-      <div className="overlay-content" onClick={(e) => e.stopPropagation()}>
-        <h3>Are you sure you want to delete this</h3>
-        <div className="button-cntn">
-          <button className="sec-button" onClick={onClose}>
-            Go Back
+    <div className="delete-overlay">
+      <div className="delete-content">
+        <h2>Delete Workout</h2>
+        <p>Are you sure you want to delete this workout?</p>
+        <p className="warning">This action cannot be undone.</p>
+
+        <div className="delete-buttons">
+          <button className="cancel-delete" onClick={onClose}>
+            Cancel
           </button>
-          <button className="pri-button" onClick={handleDeleteEntry}>
-            Confirm
+          <button className="confirm-delete" onClick={handleDelete}>
+            Delete
           </button>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default DeleteOverlay;
+export default DeleteOverlay

@@ -1,24 +1,19 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import fitnessReducer from "./fitnessSlice";
+import { configureStore } from "@reduxjs/toolkit"
+import fitnessReducer from "./fitnessSlice"
+import uiReducer from "./uiSlice"
 
-// export default configureStore({
-//     reducer: {
-//         fitness: fitnessReducer
-//     }
-// })
-
-
-
-
-
-// store.js
-import { configureStore } from '@reduxjs/toolkit'
-import fitnessReducer from './fitnessSlice'
-import uiReducer from './uiSlice'
-
-export default configureStore({
+// Create the Redux store
+const store = configureStore({
   reducer: {
     fitness: fitnessReducer,
-    ui: uiReducer
+    ui: uiReducer,
   },
+  // Add middleware configuration if needed
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false, // Disable serializable check if needed
+    }),
 })
+
+// Export the store
+export default store

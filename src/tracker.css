@@ -11,12 +11,60 @@
   width: calc(100% - 40px);
 }
 
-/* Added by feyisara */
+/* Dark mode styles */
 body.dark {
-  background-color: #333;
+  background-color: #222;
   color: white;
 }
-/* addding end */
+
+body.dark .main {
+  border-color: #444;
+  background-color: #333;
+}
+
+body.dark .logo-text {
+  color: white;
+}
+
+body.dark .dumbbell-bar {
+  background-color: white;
+}
+
+body.dark .chart-container {
+  background-color: #444;
+}
+
+body.dark .chart-container h3 {
+  color: #eee;
+}
+
+body.dark .entries-cntn {
+  background-color: #444;
+}
+
+body.dark .workout-card {
+  background-color: #555;
+  border-color: #666;
+}
+
+body.dark .type-cntn p,
+body.dark .duration-cntn p,
+body.dark .calendar-cntn p {
+  color: white;
+}
+
+body.dark .text-cntn {
+  background-color: #444;
+}
+
+body.dark .text-cntn h2 {
+  color: white;
+}
+
+body.dark .type-filter {
+  color: white;
+  border-bottom-color: white;
+}
 
 .nav-cntn {
   display: flex;
@@ -73,16 +121,6 @@ body.dark {
   letter-spacing: 0.5px;
 }
 
-/* .streak-display {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-  color: #ffb347;
-  font-weight: bold;
-  font-size: 1.1rem;
-} */
-
-
 .button-cntn {
   display: flex;
   align-items: center;
@@ -118,12 +156,26 @@ body.dark {
   background-color: #f0f0f0;
 }
 
+body.dark .sec-button {
+  background-color: #555;
+  color: white;
+}
+
 .sec-button:hover {
   background-color: #e0e0e0;
 }
 
+body.dark .sec-button:hover {
+  background-color: #666;
+}
+
 .sec-button.active {
   background-color: #333;
+  color: white;
+}
+
+body.dark .sec-button.active {
+  background-color: #76df02;
   color: white;
 }
 
@@ -170,6 +222,10 @@ body.dark {
   height: 200px;
   color: #888;
   font-style: italic;
+}
+
+body.dark .no-data {
+  color: #aaa;
 }
 
 .entries-cntn {
@@ -234,6 +290,22 @@ body.dark {
   padding-right: 20px;
 }
 
+/* Add styling for the option divider */
+.type-filter option[disabled] {
+  color: #999;
+  font-size: 12px;
+  padding: 5px 0;
+}
+
+body.dark .type-filter option {
+  background-color: #333;
+  color: white;
+}
+
+body.dark .type-filter option[disabled] {
+  color: #777;
+}
+
 .workout-cards {
   display: flex;
   flex-wrap: wrap;
@@ -258,6 +330,10 @@ body.dark {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
 }
 
+body.dark .workout-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
 .type-cntn,
 .duration-cntn,
 .calendar-cntn,
@@ -272,7 +348,8 @@ body.dark {
   font-size: 16px;
   font-weight: 600;
 }
-/* feyisara add */
+
+/* Streak display styles */
 .streak-display {
   text-align: center;
   margin-top: 0.5rem;
@@ -288,11 +365,19 @@ body.dark {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
 }
-/* add end */
 
 .duration-cntn p {
   font-size: 14px;
@@ -374,6 +459,10 @@ body.dark {
   gap: 20px;
 }
 
+body.dark .no-workouts {
+  color: #ddd;
+}
+
 .add-first-workout {
   background-color: #76df02;
   color: white;
@@ -449,6 +538,12 @@ body.dark {
 
   .chart-container {
     min-height: 200px;
+  }
+
+  .streak-display {
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
   }
 }
 
